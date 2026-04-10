@@ -237,34 +237,51 @@ header {
     color: var(--primary);
 }
 
-/* Agent Section */
-.agent-card {
+/* Agent Section Improvements */
+.agent-container {
     background: white;
     border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    box-shadow: var(--shadow);
-    margin-top: 40px;
+    flex-direction: column;
+    padding: 10px; /* Soft padding around container */
+    border: 1px solid var(--border);
 }
 
-.agent-img {
-    flex: 1;
-    min-width: 300px;
-    height: 400px;
+.agent-img-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #f3f4f6; /* Fallback background */
 }
 
-.agent-img img {
+.agent-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top; /* Focus on face */
+    transition: transform 0.3s ease;
 }
 
-.agent-bio {
-    flex: 1.5;
-    padding: 40px;
-    min-width: 300px;
+@media (min-width: 768px) {
+    .agent-container {
+        flex-direction: row;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .agent-img-wrapper {
+        flex: 1;
+        height: 450px; /* Larger desktop height */
+    }
+
+    .agent-bio {
+        flex: 1.5;
+        padding: 40px;
+        text-align: left !important;
+    }
 }
 
 /* Footer */
