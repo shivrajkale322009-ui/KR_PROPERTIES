@@ -1,17 +1,20 @@
-/* Design System - Plot Centric */
+/* 
+   PREMIUM BLUE REAL ESTATE THEME
+   Focused on Trust, Modernity, and Professionalism.
+*/
+
 :root {
-    --primary: #10b981; /* Emerald Green for Land/Growth */
-    --primary-dark: #059669;
-    --secondary: #3b82f6; /* Trust Blue */
-    --accent: #f59e0b;
-    --bg-light: #f9fafb;
+    --primary: #1e3a8a;       /* Deep Trust Blue */
+    --primary-hover: #172554; /* Darker Navy */
+    --secondary: #60a5fa;     /* Soft Light Blue */
+    --accent: #d4af37;        /* Subtle Gold for highlights */
+    --dark: #0f172a;          /* Rich Dark Blue/Black */
     --white: #ffffff;
-    --text-main: #111827;
-    --text-muted: #4b5563;
-    --border: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --radius: 10px;
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --gray-50: #f8fafc;       /* Premium background grey */
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-600: #475569;      /* Professional paragraph text */
+    --radius: 12px;
 }
 
 * {
@@ -21,314 +24,166 @@
 }
 
 body {
-    font-family: var(--font-primary);
-    background-color: var(--bg-light);
-    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-h1, h2, h3 {
-    font-weight: 700;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Buttons */
-.btn {
-    cursor: pointer;
-    border: none;
-    border-radius: var(--radius);
-    padding: 14px 28px;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-    display: inline-flex;
+/* 1. TOP BAR */
+.top-bar {
+    background: var(--primary);
+    color: var(--white);
+    height: 36px;
+    font-size: 0.8rem;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    z-index: 1001;
+    position: relative;
 }
 
-.btn-primary {
-    background-color: var(--primary);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-dark);
-}
-
-.btn-whatsapp {
-    background-color: #25d366;
-    color: var(--white);
-}
-
-.btn-whatsapp:hover {
-    background-color: #128c7e;
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid var(--border);
-    color: var(--text-main);
-}
-
-.btn-block {
+.top-bar-content {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    font-weight: 500;
 }
 
-/* Header */
+/* 2. MAIN HEADER */
 header {
     background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
-.nav-content {
+.header-inner {
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-/* Hero */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.png');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0;
-    text-align: center;
-    color: white;
-}
-
-.hero-content {
-    max-width: 800px;
+    padding: 0 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
-
-.hero-btns {
+.logo-box {
+    background: var(--white);
+    height: 70px;
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    align-items: center;
+    padding: 0;
+}
+
+.logo-box img {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    margin-left: -10px;
+}
+
+.nav-menu { display: flex; align-items: center; gap: 30px; }
+.nav-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-header {
+    padding: 12px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border: none;
+}
+.btn-header:hover { background: var(--primary-hover); }
+
+/* 3. HERO SECTION */
+.hero {
+    position: relative;
+    height: 60vh;
+    background: url('images/plot-main.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-
-/* Section Header */
-.section-header {
     text-align: center;
-    margin-bottom: 40px;
+    color: white;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Clear title against bright sky */
 }
 
-.section-header h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+.marathi-line {
+    display: block;
+    font-weight: 800;
+    color: #ffd700; /* Gold for local trust line */
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
-/* Plot Cards */
+/* 4. PLOT GRID & CARDS */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
 .plot-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 .plot-card {
     background: var(--white);
-    border-radius: 12px;
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+.plot-card:hover { transform: translateY(-5px); }
+
+.card-img-box { height: 250px; overflow: hidden; }
+.card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.plot-card-body { padding: 15px; }
+.card-price { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+.card-title { color: var(--dark); font-weight: 700; margin-top: 5px; font-size: 1rem; }
+.card-meta { color: var(--gray-600); font-size: 0.8rem; margin-top: 4px; }
+
+/* 5. FOOTER */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px 20px 20px;
 }
 
-.plot-img {
-    height: 180px; /* Reduced height */
-    position: relative;
-}
-
-.plot-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.plot-info {
-    padding: 15px; /* Compact padding */
-}
-
-.plot-price {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 2px;
-}
-
-.plot-location {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.plot-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-}
-
-.plot-features div {
-    background: #f3f4f6;
-    padding: 4px 8px;
-    border-radius: 4px;
-}
-
-/* Why Invest */
-.why-invest {
-    background-color: #ecfdf5; /* Very soft green */
-    padding: 80px 0;
-}
-
-.invest-grid {
+.footer-inner {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.invest-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-}
-
-.invest-card h3 {
-    margin-bottom: 15px;
-    color: var(--primary);
-}
-
-/* Agent Section Improvements */
-.agent-container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 10px; /* Soft padding around container */
-    border: 1px solid var(--border);
-}
-
-.agent-img-wrapper {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 12px;
-    background-color: #f3f4f6; /* Fallback background */
-}
-
-.agent-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top; /* Focus on face */
-    transition: transform 0.3s ease;
-}
-
-@media (min-width: 768px) {
-    .agent-container {
-        flex-direction: row;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .agent-img-wrapper {
-        flex: 1;
-        height: 450px; /* Larger desktop height */
-    }
-
-    .agent-bio {
-        flex: 1.5;
-        padding: 40px;
-        text-align: left !important;
-    }
-}
-
-/* Footer */
-footer {
-    background: #064e3b;
-    color: white;
-    padding: 60px 0 20px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
-    margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
 }
 
 .footer-bottom {
-    text-align: center;
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 
-/* Sticky */
-.sticky-contact {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 1000;
-}
-
-.whatsapp-float {
-    width: 65px;
-    height: 65px;
-    background: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 35px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Mobile Responsive */
+/* Responsive fixes */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 1.8rem; }
-    .hero { padding: 60px 0; }
-    .section-header h2 { font-size: 1.6rem; }
-    .agent-bio { padding: 30px 20px; }
+    .plot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
 }
