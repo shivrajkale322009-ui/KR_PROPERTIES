@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JK PLOT | Premium Residential Plots</title>
+    <title>JK DEVELOPER | Premium Residential Plots</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
@@ -34,7 +34,13 @@
 </head>
 <body>
 
-    <div class="top-branding-line"></div>
+    <div class="top-branding-line">
+        <div class="container" style="display: flex; justify-content: flex-end; align-items: center; height: 100%;">
+            <a href="tel:+919970434686" style="color: white; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;">
+                <span style="opacity: 0.8; font-weight: 400; margin-right: 5px;">Contact:</span> +91 99704 34686
+            </a>
+        </div>
+    </div>
 
     <div id="admin-bar">
         <div style="display: flex; align-items: center; gap: 15px;">
@@ -47,7 +53,7 @@
     <div id="site-wrapper">
         <header>
             <div class="header-inner">
-                <div class="logo-box"><img src="images/logo.png" alt="JK PLOT Logo"></div>
+                <div class="logo-box"><img src="images/logo.png" alt="JK DEVELOPER Logo"></div>
                 <nav class="nav-menu">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="plots.html" class="nav-link">Plots</a>
@@ -57,11 +63,17 @@
         </header>
 
         <main>
-            <section class="hero" style="min-height: 550px; display: flex; align-items: center;">
-                <div class="container" style="padding-bottom: 80px;">
-                    <span class="marathi-line" style="text-shadow: 0 4px 10px rgba(0,0,0,0.3);">आपल्या स्वप्नातील हक्काची जागा</span>
-                    <h1 style="font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px;">Residential Plots In <br>Kuruli & Chimbali</h1>
-                    <p style="font-size: 1.3rem; opacity: 0.95; max-width: 600px; margin: 0 auto;">Trusted Local Agent Near Chakan MIDC</p>
+            <section class="hero">
+                <div class="hero-slider">
+                    <div class="slide active" style="background-image: url('images/hero-1.jpg');"></div>
+                    <div class="slide" style="background-image: url('images/hero-2.png');"></div>
+                    <div class="slide" style="background-image: url('images/plot-main.jpg');"></div>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="container hero-content">
+                    <span class="marathi-line">आपल्या स्वप्नातील हक्काची जागा</span>
+                    <h1>Residential Plots In <br>Kuruli & Chimbali</h1>
+                    <p>Trusted Local Agent Near Chakan MIDC</p>
                 </div>
             </section>
 
@@ -92,7 +104,9 @@
         </main>
         
         <footer style="background-color: #1e3a8a; padding: 60px 20px 30px; color: white; text-align: center;">
-            <img src="images/logo.png" alt="JK PLOT" style="height: 70px; filter: brightness(0) invert(1); margin-bottom: 30px;">
+            <div style="background: white; display: inline-block; padding: 10px; border-radius: 12px; margin-bottom: 25px;">
+                <img src="images/logo.png" alt="JK DEVELOPER" style="height: 80px; display: block;">
+            </div>
             <p>&copy; 2026 JK Real Estate. | <a href="login.html" style="color: rgba(255,255,255,0.4); text-decoration: none;">Admin Access</a></p>
         </footer>
     </div>
@@ -142,6 +156,17 @@
         </div>
     </div>
 
+    <script>
+        // Simple Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+    </script>
     <script type="module" src="js/app-live.js"></script>
 </body>
 </html>

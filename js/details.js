@@ -18,7 +18,7 @@ async function loadPlotDetails() {
             
             // Dynamically build the detail page content
             // Assuming we have structural containers already there
-            document.title = `${plot.title} | JK PLOT`;
+            document.title = `${plot.title} | JK DEVELOPER`;
             
             // Build gallery
             let galleryHTML = plot.imageUrls.map(url => 
