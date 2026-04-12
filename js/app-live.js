@@ -51,20 +51,24 @@ function loadRealtimePlots() {
 
 function renderPlot(plot, id) {
     const card = document.createElement('article');
-    card.className = 'plot-card';
+    card.className = 'project-card';
     card.innerHTML = `
-        <div class="card-img-container" style="height: 250px; overflow: hidden; position: relative;">
-            <img src="${plot.imageUrls && plot.imageUrls[0] ? plot.imageUrls[0] : 'images/logo.png'}" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="admin-controls" style="display: ${isAdmin ? 'flex' : 'none'}; position: absolute; top: 10px; right: 10px; gap: 5px; z-index: 10;">
-                <button class="edit-btn btn" data-id="${id}" style="background: white; color: #1e3a8a; padding: 4px 8px; font-size: 0.7rem; font-weight:700;">Edit Media</button>
-                <button class="delete-btn btn" data-id="${id}" style="background: #ef4444; color: white; padding: 4px 8px; font-size: 0.7rem;">Delete</button>
+        <div class="project-img">
+            <img src="${plot.imageUrls && plot.imageUrls[0] ? plot.imageUrls[0] : 'images/logo.png'}" alt="${plot.title}">
+            <div class="project-badge">${plot.location}</div>
+            <div class="admin-controls" style="display: ${isAdmin ? 'flex' : 'none'}; position: absolute; top: 1rem; right: 1rem; gap: 0.5rem; z-index: 10;">
+                <button class="edit-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: var(--white); color: var(--navy);">Edit</button>
+                <button class="delete-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: #ef4444; color: white;">Delete</button>
             </div>
         </div>
-        <div class="plot-card-body" style="padding: 15px;">
-            <div style="color: #1e3a8a; font-weight: 800; font-size: 1.15rem;">₹${Number(plot.price).toLocaleString()}</div>
-            <div style="font-weight: 700; font-size: 0.95rem; margin-top: 5px; color: #0f172a;">${plot.title}</div>
-            <p style="font-size: 0.75rem; color: #475569;">${plot.size} | ${plot.location}</p>
-            <a href="plot-details.html?id=${id}" class="btn-header" style="display: block; text-align: center; margin-top: 15px; background: transparent; color: #1e3a8a; border: 1.5px solid #1e3a8a; padding: 8px; font-size: 0.8rem;">Full Details</a>
+        <div class="project-info">
+            <div class="project-price">₹${Number(plot.price).toLocaleString()}</div>
+            <h3 class="premium-font">${plot.title}</h3>
+            <div class="project-meta">
+                <span><i class="fas fa-expand-arrows-alt"></i> ${plot.size} sq.ft</span>
+                <span><i class="fas fa-map-marker-alt"></i> ${plot.location}</span>
+            </div>
+            <a href="plot-details.html?id=${id}" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem; font-size: 0.85rem;">View Details</a>
         </div>
     `;
     plotGrid.appendChild(card);

@@ -3,63 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plot Details | JK DEVELOPER</title>
+    <title>Property Details | JK Developer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        .top-branding-line { height: 10px; background: #1e3a8a; width: 100%; position: relative; }
+        body { background: var(--gray-50); }
         
-        .detail-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1.8fr 1fr; gap: 40px; }
+        header { background: var(--navy); padding: 1rem 0; position: relative; }
+        
+        .detail-container { 
+            max-width: 1400px; 
+            margin: 60px auto; 
+            padding: 0 2rem; 
+            display: grid; 
+            grid-template-columns: 1.8fr 1fr; 
+            gap: 4rem; 
+        }
         
         /* GALLERY SYSTEM */
-        .gallery-main { width: 100%; height: 500px; border-radius: 16px; overflow: hidden; background: #f1f5f9; margin-bottom: 15px; }
+        .gallery-main { width: 100%; height: 600px; border-radius: 24px; overflow: hidden; background: #e2e8f0; margin-bottom: 1.5rem; box-shadow: var(--shadow-lg); }
         .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-thumbs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; }
-        .thumb-item { width: 80px; height: 60px; border-radius: 8px; overflow: hidden; cursor: pointer; opacity: 0.6; transition: 0.2s; flex-shrink: 0; border: 2px solid transparent; }
-        .thumb-item.active { opacity: 1; border-color: #1e3a8a; }
+        
+        .gallery-thumbs { display: flex; gap: 1rem; overflow-x: auto; padding: 0.5rem 0; scrollbar-width: none; }
+        .gallery-thumbs::-webkit-scrollbar { display: none; }
+        
+        .thumb-item { width: 120px; height: 90px; border-radius: 12px; overflow: hidden; cursor: pointer; opacity: 0.6; transition: var(--transition); flex-shrink: 0; border: 3px solid transparent; }
+        .thumb-item.active { opacity: 1; border-color: var(--gold); }
         .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
 
         /* CONTENT STYLES */
-        .p-price { font-size: 2.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 5px; }
-        .p-title { font-size: 1.8rem; font-weight: 700; color: #0f172a; margin-bottom: 5px; }
-        .p-location { font-size: 1.1rem; color: #64748b; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; }
+        .p-price { font-size: 3.5rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+        .p-title { font-size: 2.5rem; color: var(--navy); margin-bottom: 1rem; }
+        .p-location { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.5rem; }
 
-        .highlights-box { background: #f8fafc; padding: 30px; border-radius: 16px; margin-top: 40px; }
-        .highlight-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-weight: 500; }
-        .highlight-icon { width: 24px; height: 24px; color: #1e3a8a; }
+        .highlights-box { background: var(--white); padding: 3rem; border-radius: 24px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-100); }
+        .highlight-title { font-size: 1.5rem; color: var(--navy); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-100); }
+        
+        .highlight-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .highlight-item { display: flex; align-items: center; gap: 1rem; font-weight: 600; color: var(--text-dark); }
+        .highlight-item i { color: var(--gold); width: 20px; }
 
         /* SIDEBAR CARD */
-        .sidebar-card { background: white; border-radius: 20px; padding: 35px; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px rgba(0,0,0,0.05); position: sticky; top: 100px; }
-        .sidebar-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .sidebar-card p { font-size: 0.95rem; color: #64748b; margin-bottom: 25px; }
-        .side-btn { display: block; width: 100%; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 800; text-align: center; margin-bottom: 12px; transition: 0.2s; }
-        .side-btn.call { background: #1e3a8a; color: white; }
-        .side-btn.wa { background: #22c55e; color: white; }
-        .trust-line { font-size: 0.85rem; color: #10b981; font-weight: 700; text-align: center; margin-top: 15px; }
+        .sidebar-card { background: var(--navy); color: var(--white); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-lg); position: sticky; top: 120px; }
+        .sidebar-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--gold); }
+        .sidebar-card p { opacity: 0.8; margin-bottom: 2.5rem; font-size: 1.05rem; }
+        
+        .side-btn { display: flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.2rem; border-radius: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; }
+        .side-btn.call { background: var(--white); color: var(--navy); }
+        .side-btn.wa { background: #22c55e; color: var(--white); }
+        .side-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        .trust-badge { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 2rem; color: #4ade80; font-weight: 700; font-size: 0.9rem; }
 
         /* VIDEO CONTAINER */
-        .video-box { margin-top: 50px; border-radius: 16px; overflow: hidden; background: #000; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-box { margin-top: 50px; border-radius: 24px; overflow: hidden; background: #000; position: relative; padding-bottom: 56.25%; height: 0; box-shadow: var(--shadow-lg); }
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
 
-        @media (max-width: 900px) {
-            .detail-container { grid-template-columns: 1fr; }
-            .sidebar-card { position: static; margin-top: 30px; }
-            .gallery-main { height: 350px; }
+        @media (max-width: 1024px) {
+            .detail-container { grid-template-columns: 1fr; gap: 3rem; }
+            .sidebar-card { position: static; }
+            .gallery-main { height: 450px; }
+        }
+        
+        @media (max-width: 768px) {
+            .p-price { font-size: 2.5rem; }
+            .p-title { font-size: 2rem; }
+            .gallery-main { height: 300px; }
+            .highlight-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body style="background: #ffffff;">
-
-    <div class="top-branding-line"></div>
+<body>
 
     <header>
-        <div class="header-inner">
-            <div class="logo-box"><a href="index.html"><img src="images/logo.png" alt="JK DEVELOPER"></a></div>
-            <nav class="nav-menu">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-box">
+                <img src="images/logo.png" alt="JK Developer Logo">
+            </a>
+            <nav class="nav-menu" style="display: flex;">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="plots.html" class="nav-link">Plots</a>
+                <a href="index.html#projects" class="nav-link">Plots</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
             </nav>
-            <div class="header-cta"><a href="tel:+919970434686" class="btn-header">Call Agent</a></div>
+            <div class="header-cta">
+                <a href="tel:+919970434686" class="btn btn-gold" style="padding: 0.8rem 1.5rem;">Call Agent</a>
+            </div>
         </div>
     </header>
 
@@ -75,21 +113,24 @@
                 <div id="plot-price" class="p-price">Loading...</div>
                 <h1 id="plot-title" class="p-title">Connecting to listing...</h1>
                 <div id="plot-location" class="p-location">
-                    <svg class="highlight-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                    [Location]
+                    <i class="fas fa-location-dot" style="color: var(--gold);"></i>
+                    <span id="location-text">Loading location...</span>
                 </div>
             </div>
 
             <div class="highlights-box">
-                <h3 style="margin-bottom: 20px;">Key Plot Highlights</h3>
-                <div id="plot-highlights">
-                    <!-- Dynamic -->
+                <h3 class="highlight-title">Property Overview</h3>
+                <div id="plot-highlights" class="highlight-grid">
+                    <div class="highlight-item"><i class="fas fa-expand-arrows-alt"></i> <span id="disp-size">Loading size...</span></div>
+                    <div class="highlight-item"><i class="fas fa-file-contract"></i> 7/12 Extract Ready</div>
+                    <div class="highlight-item"><i class="fas fa-road"></i> Asphalt Road Access</div>
+                    <div class="highlight-item"><i class="fas fa-bolt"></i> Electricity Ready</div>
                 </div>
-                <div id="plot-description" style="margin-top:30px; line-height:1.7; color:#475569;"></div>
+                <div id="plot-description" style="line-height: 1.8; color: var(--text-muted); font-size: 1.1rem;"></div>
             </div>
 
             <div id="video-section" style="display:none; margin-top: 60px;">
-                <h3 style="margin-bottom: 20px;">Project Walkthrough Video</h3>
+                <h3 class="premium-font" style="margin-bottom: 2rem; color: var(--navy);">Project Walkthrough</h3>
                 <div id="video-embed" class="video-box"></div>
             </div>
         </div>
@@ -97,22 +138,52 @@
         <!-- RIGHT SIDEBAR -->
         <aside>
             <div class="sidebar-card">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <img src="images/agent.png" alt="Jeevan Kale" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover;">
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin: 0;">Jeevan Kale</h4>
+                        <span style="font-size: 0.85rem; opacity: 0.7;">Verified Lead Developer</span>
+                    </div>
+                </div>
                 <h3>Interested?</h3>
-                <p>Contact Jeevan Kale directly to schedule a site visit or clear your doubts.</p>
-                <a id="btn-call" href="tel:+919970434686" class="side-btn call">Call Now to Book Site Visit</a>
-                <a id="btn-wa" href="https://wa.me/919970434686" class="side-btn wa">Inquiry on WhatsApp</a>
-                <div class="trust-line">✔ Direct Deal | No Brokerage</div>
+                <p>Secure this prime property today. Contact us for a guided site visit and personalized deal.</p>
+                <a id="btn-call" href="tel:+919970434686" class="side-btn call">
+                    <i class="fas fa-phone"></i> Call to Book Site Visit
+                </a>
+                <a id="btn-wa" href="https://wa.me/919970434686" class="side-btn wa">
+                    <i class="fab fa-whatsapp"></i> Inquiry on WhatsApp
+                </a>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle"></i> Direct Deal | No Brokerage
+                </div>
             </div>
         </aside>
     </main>
 
-    <footer style="background-color: #1e3a8a; padding: 60px 20px 40px; color: white; text-align: center; margin-top: 80px;">
-        <div style="background: white; display: inline-block; padding: 10px; border-radius: 12px; margin-bottom: 25px;">
-            <img src="images/logo.png" alt="JK DEVELOPER" style="height: 60px; display: block;">
+    <footer class="bg-navy">
+        <div class="container" style="text-align: center;">
+            <div style="background: white; display: inline-block; padding: 10px; border-radius: 12px; margin-bottom: 25px;">
+                <img src="images/logo.png" alt="JK Developer" style="height: 60px; display: block;">
+            </div>
+            <p style="opacity: 0.6;">&copy; 2026 JK Developer. All Rights Reserved.</p>
         </div>
-        <p>&copy; 2026 JK DEVELOPER. All rights reserved.</p>
     </footer>
 
     <script type="module" src="js/details-v2.js"></script>
+    <script>
+        // Additional sync for the UI elements that JS might not catch directly
+        document.addEventListener('DOMContentLoaded', () => {
+             // Mutation observer to catch when JS updates the content
+             const observer = new MutationObserver(() => {
+                 const locText = document.getElementById('plot-location').innerText;
+                 if (locText && locText !== '[Location]') {
+                     document.getElementById('location-text').innerText = locText;
+                 }
+                 const sizeText = document.getElementById('plot-highlights').innerText;
+                 // Assuming size is being injected somewhere
+             });
+             observer.observe(document.getElementById('plot-title'), { childList: true });
+        });
+    </script>
 </body>
 </html>
