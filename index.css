@@ -877,6 +877,27 @@ header.sticky .logo-text {
         padding: 0 5%;
     }
 }
+
+@media (min-width: 1024px) {
+    .lifestyle-carousel-wrapper {
+        justify-content: center;
+        overflow: visible;
+    }
+    
+    .lifestyle-carousel-inner {
+        padding: 0;
+        justify-content: center;
+        scroll-snap-type: none;
+        width: 100%;
+        max-width: 1200px;
+    }
+    
+    .lifestyle-card {
+        min-width: 0;
+        flex: 1;
+        max-width: 380px;
+    }
+}
 .amenities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
