@@ -697,9 +697,9 @@ header.sticky .logo-text {
 .family-card-stack {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5rem; /* Increased spacing for better conversion */
     max-width: 800px;
-    margin: 3rem auto 0;
+    margin: 4rem auto 0;
 }
 
 .family-card {
@@ -760,6 +760,14 @@ header.sticky .logo-text {
     
     .soft-title {
         font-size: 2.2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.5rem; /* Slightly larger for mobile readability */
+    }
+
+    .card-content p {
+        font-size: 1.15rem; /* Slightly larger for mobile readability */
     }
 }
 
