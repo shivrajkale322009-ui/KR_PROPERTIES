@@ -799,7 +799,7 @@ footer {
     }
 
     .hero {
-        height: 65vh; /* Optimal height to see image and scroll content */
+        height: 75vh; /* Adjusted to 75% height as requested */
     }
 
     .glass-panel {
