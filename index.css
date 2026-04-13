@@ -21,6 +21,11 @@
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --cream-bg: #fdfbf7;
+    --soft-blue: #eef7ff;
+    --soft-gold: #fff9e6;
+    --soft-green: #f0fff4;
+    --marathi-text: #2c3e50;
 }
 
 * {
@@ -609,6 +614,99 @@ header.sticky .logo-text {
     border-radius: 15px;
     margin-bottom: 2rem;
     font-size: 1.5rem;
+}
+
+/* --- FAMILY oriented TRUST SECTION --- */
+.bg-cream {
+    background-color: var(--cream-bg);
+}
+
+.soft-title {
+    color: var(--marathi-text);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.divider-soft {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 auto;
+}
+
+.family-card-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+.family-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.family-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.bg-soft-blue { background: var(--soft-blue); color: #3498db; }
+.bg-soft-gold { background: var(--soft-gold); color: #f1c40f; }
+.bg-soft-green { background: var(--soft-green); color: #2ecc71; }
+
+.card-content h3 {
+    font-size: 1.3rem;
+    color: var(--marathi-text);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .family-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+    
+    .card-icon-box {
+        margin-bottom: 0.5rem;
+    }
+    
+    .soft-title {
+        font-size: 1.8rem;
+    }
 }
 
 /* --- AMENITIES --- */
