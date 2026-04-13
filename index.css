@@ -807,6 +807,7 @@ header.sticky .logo-text {
 .lifestyle-card {
     min-width: 280px;
     max-width: 320px;
+    flex-shrink: 0; /* Prevents cards from squashing */
     scroll-snap-align: center;
     transition: var(--transition);
 }
@@ -873,8 +874,13 @@ header.sticky .logo-text {
         min-width: 250px;
     }
     
+    .lifestyle-carousel-wrapper {
+        justify-content: flex-start; /* Fix scroll start */
+    }
+    
     .lifestyle-carousel-inner {
-        padding: 0 5%;
+        padding: 0 20px; /* Better spacing for mobile */
+        justify-content: flex-start;
     }
 }
 
