@@ -79,7 +79,7 @@ a {
     padding: 100px 0;
 }
 
-#projects.section-padding {
+#trust-features.section-padding {
     padding-top: 50px;
 }
 
@@ -1059,6 +1059,10 @@ footer {
 
     .section-padding {
         padding: 60px 0;
+    }
+
+    #trust-features.section-padding {
+        padding-top: 30px;
     }
 
     .section-title h2 {
