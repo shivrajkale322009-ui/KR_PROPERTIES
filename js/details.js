@@ -15,13 +15,13 @@ async function loadPlotDetails() {
 
         if (docSnap.exists()) {
             const plot = docSnap.data();
-            
+
             // Dynamically build the detail page content
             // Assuming we have structural containers already there
-            document.title = `${plot.title} | JK DEVELOPER`;
-            
+            document.title = `${plot.title} | JK Properties`;
+
             // Build gallery
-            let galleryHTML = plot.imageUrls.map(url => 
+            let galleryHTML = plot.imageUrls.map(url =>
                 `<img src="${url}" class="gallery-img" style="margin-bottom: 20px; border-radius: 12px; width:100%;">`
             ).join("");
 

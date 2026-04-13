@@ -12,7 +12,7 @@ let isAdmin = false;
 // 1. AUTH STATE
 onAuthStateChanged(auth, (user) => {
     isAdmin = !!user;
-    if (isAdmin) { adminBar.style.display = 'flex'; siteWrapper.style.paddingTop = '50px'; } 
+    if (isAdmin) { adminBar.style.display = 'flex'; siteWrapper.style.paddingTop = '50px'; }
     else { adminBar.style.display = 'none'; siteWrapper.style.paddingTop = '0'; }
     loadRealtimePlots();
 });
@@ -42,10 +42,17 @@ const compressImage = async (file) => {
 let currentImageArray = [];
 
 function loadRealtimePlots() {
-    const q = query(collection(db, "plots"), orderBy("createdAt", "desc"));
+    const q = query(collection(db, "plots"));
     onSnapshot(q, (snapshot) => {
+        console.log("Firestore Update: " + snapshot.size + " plots found.");
         plotGrid.innerHTML = "";
-        snapshot.forEach((document) => renderPlot(document.data(), document.id));
+        snapshot.forEach((document) => {
+            console.log("Rendering plot: " + document.id);
+            renderPlot(document.data(), document.id);
+        });
+    }, (err) => {
+        console.error("Firestore Error: ", err);
+        alert("Firestore Error: " + err.message);
     });
 }
 
@@ -54,7 +61,7 @@ function renderPlot(plot, id) {
     card.className = 'project-card';
     card.innerHTML = `
         <div class="project-img">
-            <img src="${plot.imageUrls && plot.imageUrls[0] ? plot.imageUrls[0] : 'images/logo.png'}" alt="${plot.title}">
+            <img src="${plot.imageUrls && plot.imageUrls[0] ? plot.imageUrls[0] : 'images/HERO-1.png'}" alt="${plot.title}">
             <div class="project-badge">${plot.location}</div>
             <div class="admin-controls" style="display: ${isAdmin ? 'flex' : 'none'}; position: absolute; top: 1rem; right: 1rem; gap: 0.5rem; z-index: 10;">
                 <button class="edit-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: var(--white); color: var(--navy);">Edit</button>
@@ -76,7 +83,7 @@ function renderPlot(plot, id) {
 
 // 4. FORM HANDLING
 document.getElementById('add-plot-btn').addEventListener('click', () => {
-    plotForm.reset(); document.getElementById('edit-id').value = ""; 
+    plotForm.reset(); document.getElementById('edit-id').value = "";
     currentImageArray = []; renderImageManager();
     document.getElementById('modal-title').innerText = "Create Global Plot Listing";
     modal.style.display = 'flex';
@@ -104,7 +111,7 @@ plotForm.addEventListener('submit', async (e) => {
     e.preventDefault(); const saveBtn = document.getElementById('save-btn');
     saveBtn.innerText = "Processing..."; saveBtn.disabled = true;
     const id = document.getElementById('edit-id').value;
-    
+
     // Get basic fields
     const plotData = {
         title: document.getElementById('title').value,
@@ -124,7 +131,7 @@ plotForm.addEventListener('submit', async (e) => {
         }
         plotData.imageUrls = currentImageArray;
 
-        if (id) { await updateDoc(doc(db, "plots", id), plotData); } 
+        if (id) { await updateDoc(doc(db, "plots", id), plotData); }
         else { plotData.createdAt = serverTimestamp(); await addDoc(collection(db, "plots"), plotData); }
         modal.style.display = 'none';
     } catch (err) { alert("Failed. Check internet/image sizes."); } finally { saveBtn.innerText = "Publish"; saveBtn.disabled = false; }

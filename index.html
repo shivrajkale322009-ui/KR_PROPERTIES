@@ -4,20 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JK Developer | Premium Residential Plots in Kuruli & Chimbali</title>
-    <meta name="description" content="Invest in premium residential plots with JK Developer. Discover high-end infrastructure and luxury living in Kuruli & Chimbali. Trust, Quality, and Perfection.">
-    
+    <title>JK Properties | Premium Residential Plots in Kuruli & Chimbali</title>
+    <meta name="description"
+        content="Invest in premium residential plots with JK Properties. Discover high-end infrastructure and luxury living in Kuruli & Chimbali. Trust, Quality, and Perfection.">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playball&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="index.css">
-    
+
     <style>
         /* Admin related styles that need to be in the head for immediate effect */
         #admin-bar {
@@ -73,31 +76,36 @@
     <!-- Admin Tools -->
     <div id="admin-bar">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <span style="background: var(--gold); color: var(--navy); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">ADMIN MODE</span>
-            <button id="add-plot-btn" class="btn" style="padding: 8px 20px; font-size: 0.8rem; background: var(--gold); color: var(--navy);">+ Add Plot</button>
+            <span
+                style="background: var(--gold); color: var(--navy); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">ADMIN
+                MODE</span>
+            <button id="add-plot-btn" class="btn"
+                style="padding: 8px 20px; font-size: 0.8rem; background: var(--gold); color: var(--navy);">+ Add
+                Plot</button>
         </div>
-        <button id="logout-btn" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer;">Logout</button>
+        <button id="logout-btn"
+            style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer;">Logout</button>
     </div>
 
-    <header id="main-header">
+    <header id="main-header" class="premium-nav">
         <div class="container header-inner">
             <a href="index.html" class="logo-box">
-                <img src="images/logo.png" alt="JK Developer Logo">
+                <span class="logo-text"><span class="brand-accent">JK</span> Properties</span>
             </a>
-            
+
             <nav class="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
-                <a href="#projects" class="nav-link">Plots</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
-            
-            <div class="header-cta">
-                <a href="tel:+919970434686" class="btn btn-gold">Call Agent</a>
-            </div>
 
-            <div class="mobile-toggle">
-                <i class="fas fa-bars"></i>
+            <div class="header-icons">
+                <a href="tel:+919970434686" class="icon-btn" title="Call Us"><i class="fas fa-phone"></i></a>
+                <a href="https://wa.me/919970434686" class="icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -106,34 +114,29 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-slider">
-                <div class="hero-slide active" style="background-image: url('images/hero-2.png');"></div>
-                <div class="hero-slide" style="background-image: url('images/hero-family.png');"></div>
-                <div class="hero-slide" style="background-image: url('images/plot-main.jpg');"></div>
-                <div class="hero-slide" style="background-image: url('images/hero-1.jpg');"></div>
+                <div class="hero-slide active"
+                    style="background-image: url('images/HERO-1.png');">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-slide"
+                    style="background-image: url('images/HERO-1.png');">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-slide"
+                    style="background-image: url('images/HERO-1.png');">
+                    <div class="hero-overlay"></div>
+                </div>
             </div>
-            <div class="hero-overlay"></div>
-            <div class="container hero-content text-center">
-                <h1 class="premium-font">Premium Residential Plots in Kuruli & Chimbali</h1>
-                <p>Invest in your dream property with trusted infrastructure and unparalleled luxury. Your future starts here.</p>
-                <div class="hero-ctas" style="justify-content: center;">
-                    <a href="#projects" class="btn btn-gold">Explore Plots</a>
-                    <a href="#contact" class="btn btn-outline">Book Site Visit</a>
-                </div>
 
-                <!-- Floating Agent Card -->
-                <div class="agent-floating-card">
-                    <div class="agent-img-box">
-                        <img src="images/agent.png" alt="Jeevan Kale">
-                    </div>
-                    <div class="agent-info-content" style="text-align: left;">
-                        <h3 class="premium-font">Jeevan Kale</h3>
-                        <span class="agent-title">Sales Consultant</span>
-                        <div class="agent-card-btns">
-                            <a href="tel:+919970434686" class="btn btn-gold agent-btn-sm" style="padding: 0.6rem 1rem;">Call</a>
-                            <a href="https://wa.me/919970434686" class="btn btn-outline agent-btn-sm" style="color: var(--navy); border-color: var(--navy); padding: 0.6rem 1rem;">WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Slider Navigation -->
+            <button class="slider-arrow prev luxe-arrow"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow next luxe-arrow"><i class="fas fa-chevron-right"></i></button>
+
+            <!-- Slider Pagination -->
+            <div class="slider-dots pagination-bottom">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </section>
 
@@ -141,10 +144,10 @@
         <section id="projects" class="section-padding">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>Featured Projects</h2>
+                    <h2>Our Projects</h2>
                     <div class="divider"></div>
                 </div>
-                
+
                 <div class="plot-grid">
                     <!-- Cards will be injected by app-live.js -->
                     <!-- I'll provide a placeholder structures that will be replaced by JS, but styled via the new CSS -->
@@ -160,7 +163,7 @@
         <section id="about" class="section-padding bg-navy">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2 style="color: white;">Why Choose JK Developer</h2>
+                    <h2 style="color: white;">Why Choose JK Properties</h2>
                     <div class="divider"></div>
                 </div>
 
@@ -168,22 +171,26 @@
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                         <h3>Trusted Legacy</h3>
-                        <p style="color: var(--gray-600);">Years of excellence in real estate with a focus on transparency and trust.</p>
+                        <p style="color: var(--gray-600);">Years of excellence in real estate with a focus on
+                            transparency and trust.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-road"></i></div>
                         <h3>Prime Locations</h3>
-                        <p style="color: var(--gray-600);">Strategically located plots in fast-developing Kuruli & Chimbali areas.</p>
+                        <p style="color: var(--gray-600);">Strategically located plots in fast-developing Kuruli &
+                            Chimbali areas.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-building"></i></div>
                         <h3>Top Infrastructure</h3>
-                        <p style="color: var(--gray-600);">Asphalt roads, modern drainage, and electricity ready on every plot.</p>
+                        <p style="color: var(--gray-600);">Asphalt roads, modern drainage, and electricity ready on
+                            every plot.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
                         <h3>Client Focused</h3>
-                        <p style="color: var(--gray-600);">Personalized support from site visit to final documentation.</p>
+                        <p style="color: var(--gray-600);">Personalized support from site visit to final documentation.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -233,11 +240,14 @@
                 <div class="testimonials-slider">
                     <div class="testimonial-track">
                         <div class="testimonial-slide">
-                            <p class="testimonial-content">"The level of professionalism and the quality of infrastructure at Shri Ganesh Dream Park exceeded my expectations. JK Developer is truly reliable."</p>
+                            <p class="testimonial-content">"The level of professionalism and the quality of
+                                infrastructure at Shri Ganesh Dream Park exceeded my expectations. JK Properties is
+                                truly reliable."</p>
                             <div class="testimonial-author">- Rahul Deshmukh</div>
                         </div>
                         <div class="testimonial-slide">
-                            <p class="testimonial-content">"Buying a plot in Chimbali was a dream. Jeevan Kale made the process so smooth and transparent. Highly recommended!"</p>
+                            <p class="testimonial-content">"Buying a plot in Chimbali was a dream. Jeevan Kale made the
+                                process so smooth and transparent. Highly recommended!"</p>
                             <div class="testimonial-author">- Anita Patil</div>
                         </div>
                     </div>
@@ -250,16 +260,21 @@
             <div class="container contact-container">
                 <div class="contact-info">
                     <h2 class="premium-font">Let's Find Your <span class="gold-text">Dream Plot</span></h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-muted);">Have questions about our plots or want to schedule a site visit? Our expert team is here to help you every step of the way.</p>
-                    
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-muted);">Have questions about
+                        our plots or want to schedule a site visit? Our expert team is here to help you every step of
+                        the way.</p>
+
                     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <a href="tel:+919970434686" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
+                        <a href="tel:+919970434686"
+                            style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
                             <i class="fas fa-phone gold-text"></i> +91 99704 34686
                         </a>
-                        <a href="mailto:info@jkdeveloper.com" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
-                            <i class="fas fa-envelope gold-text"></i> contact@jkdeveloper.com
+                        <a href="mailto:info@jkProperties.com"
+                            style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
+                            <i class="fas fa-envelope gold-text"></i> contact@jkProperties.com
                         </a>
-                        <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; font-weight: 700;">
                             <i class="fas fa-location-dot gold-text"></i> Kuruli, Pune - 410501
                         </div>
                     </div>
@@ -289,9 +304,10 @@
             <div class="footer-top">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <img src="images/logo.png" alt="JK Developer">
+                        <span class="logo-text"><span class="brand-accent">JK</span> Properties</span>
                     </div>
-                    <p style="opacity: 0.7;">Leading residential plot developer in Kuruli and Chimbali. We build trust and infrastructure for your future home.</p>
+                    <p style="opacity: 0.7;">Leading residential plot Properties in Kuruli and Chimbali. We build trust
+                        and infrastructure for your future home.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
@@ -313,16 +329,21 @@
                 </div>
                 <div class="footer-links">
                     <h4>Newsletter</h4>
-                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 1rem;">Subscribe to get the latest plot availability updates.</p>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 1rem;">Subscribe to get the latest plot
+                        availability updates.</p>
                     <div style="display: flex; gap: 0.5rem;">
-                        <input type="email" class="form-control" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;" placeholder="Email">
-                        <button class="btn btn-gold" style="padding: 0 1rem;"><i class="fas fa-paper-plane"></i></button>
+                        <input type="email" class="form-control"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;"
+                            placeholder="Email">
+                        <button class="btn btn-gold" style="padding: 0 1rem;"><i
+                                class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 JK Developer. All Rights Reserved. | <a href="login.html" style="color: inherit; opacity: 0.6;">Admin Access</a>
-            </div>
+                <div class="footer-bottom">
+                    &copy; 2026 <span class="logo-text" style="font-size: 1.1rem; display: inline-flex; vertical-align: middle;"><span class="brand-accent" style="font-size: 1.5rem;">JK</span> Properties</span>. All Rights Reserved. | <a href="login.html"
+                        style="color: inherit; opacity: 0.6;">Admin Access</a>
+                </div>
         </div>
     </footer>
 
@@ -368,11 +389,13 @@
                     <h4 style="margin-bottom:15px;">Media: Video Walkthrough</h4>
                     <div class="form-group">
                         <label>YouTube Video Link</label>
-                        <input type="text" id="video-link" class="admin-input" placeholder="https://www.youtube.com/watch?v=...">
+                        <input type="text" id="video-link" class="admin-input"
+                            placeholder="https://www.youtube.com/watch?v=...">
                     </div>
                     <div class="form-group">
                         <label>Or Embed Code (Advanced)</label>
-                        <textarea id="video-embed-field" class="admin-input" rows="2" placeholder="<iframe>...</iframe>"></textarea>
+                        <textarea id="video-embed-field" class="admin-input" rows="2"
+                            placeholder="<iframe>...</iframe>"></textarea>
                     </div>
                 </div>
 
@@ -388,7 +411,8 @@
 
                 <div style="display: flex; gap: 15px; margin-top: 20px;">
                     <button type="submit" id="save-btn" class="btn btn-gold" style="flex: 1;">Save Changes</button>
-                    <button type="button" id="close-modal" class="btn" style="flex: 0.5; background: #e2e8f0; color: #475569;">Cancel</button>
+                    <button type="button" id="close-modal" class="btn"
+                        style="flex: 0.5; background: #e2e8f0; color: #475569;">Cancel</button>
                 </div>
             </form>
         </div>
@@ -398,25 +422,43 @@
     <script>
         // Sticky Header & Navigation
         const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('sticky');
-            } else {
-                header.classList.remove('sticky');
-            }
-        });
 
-        // Hero Image Slider
+        // Hero Slider System
         const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.dot');
+        const heroPrev = document.querySelector('.slider-arrow.prev');
+        const heroNext = document.querySelector('.slider-arrow.next');
         let heroIndex = 0;
+        let sliderTimer;
 
-        function rotateHero() {
-            heroSlides[heroIndex].classList.remove('active');
-            heroIndex = (heroIndex + 1) % heroSlides.length;
-            heroSlides[heroIndex].classList.add('active');
+        const heroWrapper = document.querySelector('.hero-slider');
+
+        function updateSlider(index) {
+            heroDots.forEach(dot => dot.classList.remove('active'));
+
+            heroIndex = (index + heroSlides.length) % heroSlides.length;
+
+            heroWrapper.style.transform = `translateX(-${heroIndex * 100}%)`;
+            heroDots[heroIndex].classList.add('active');
+
+            resetTimer();
         }
 
-        setInterval(rotateHero, 6000);
+        function nextHero() { updateSlider(heroIndex + 1); }
+        function prevHero() { updateSlider(heroIndex - 1); }
+
+        function resetTimer() {
+            clearInterval(sliderTimer);
+            sliderTimer = setInterval(nextHero, 5000);
+        }
+
+        heroNext.addEventListener('click', nextHero);
+        heroPrev.addEventListener('click', prevHero);
+        heroDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => updateSlider(i));
+        });
+
+        resetTimer();
 
         // Testimonials Slider
         const track = document.querySelector('.testimonial-track');
@@ -433,7 +475,7 @@
         // Mobile Menu Toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        
+
         mobileToggle.addEventListener('click', () => {
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
             if (navMenu.style.display === 'flex') {
