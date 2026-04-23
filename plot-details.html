@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Details | KR Properties</title>
+    <title>Flat Details | KR Properties</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,7 +276,7 @@
             </a>
             <nav class="nav-menu" style="display: flex;">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#projects" class="nav-link">Plots</a>
+                <a href="index.html#projects" class="nav-link">Flats</a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
             </nav>
             <div class="header-cta">
@@ -288,7 +288,7 @@
     <main class="detail-container">
         <!-- LEFT CONTENT -->
         <div class="main-details">
-            <div id="plot-gallery">
+            <div id="flat-gallery">
                 <div class="gallery-main">
                     <div id="main-view-placeholder"
                         style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#1e293b; color:var(--gold); font-size:2rem; font-weight:800;">
@@ -298,9 +298,9 @@
             </div>
 
             <div style="margin-top: 40px;">
-                <div id="plot-price" class="p-price">Loading...</div>
-                <h1 id="plot-title" class="p-title">Connecting to listing...</h1>
-                <div id="plot-location" class="p-location">
+                <div id="flat-price" class="p-price">Loading...</div>
+                <h1 id="flat-title" class="p-title">Connecting to listing...</h1>
+                <div id="flat-location" class="p-location">
                     <i class="fas fa-location-dot" style="color: var(--gold);"></i>
                     <span id="location-text">Loading location...</span>
                 </div>
@@ -308,14 +308,14 @@
 
             <div class="highlights-box">
                 <h3 class="highlight-title">Property Overview</h3>
-                <div id="plot-highlights" class="highlight-grid">
+                <div id="flat-highlights" class="highlight-grid">
                     <div class="highlight-item"><i class="fas fa-expand-arrows-alt"></i> <span id="disp-size">Loading
                             size...</span></div>
                     <div class="highlight-item"><i class="fas fa-file-contract"></i> 7/12 Extract Ready</div>
                     <div class="highlight-item"><i class="fas fa-road"></i> Asphalt Road Access</div>
                     <div class="highlight-item"><i class="fas fa-bolt"></i> Electricity Ready</div>
                 </div>
-                <div id="plot-description" style="line-height: 1.8; color: var(--text-muted); font-size: 1.1rem;"></div>
+                <div id="flat-description" style="line-height: 1.8; color: var(--text-muted); font-size: 1.1rem;"></div>
             </div>
 
             <div id="video-section" style="display:none; margin-top: 60px;">
@@ -365,14 +365,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Mutation observer to catch when JS updates the content
             const observer = new MutationObserver(() => {
-                const locText = document.getElementById('plot-location').innerText;
+                const locText = document.getElementById('flat-location').innerText;
                 if (locText && locText !== '[Location]') {
                     document.getElementById('location-text').innerText = locText;
                 }
-                const sizeText = document.getElementById('plot-highlights').innerText;
+                const sizeText = document.getElementById('flat-highlights').innerText;
                 // Assuming size is being injected somewhere
             });
-            observer.observe(document.getElementById('plot-title'), { childList: true });
+            observer.observe(document.getElementById('flat-title'), { childList: true });
         });
     </script>
 </body>

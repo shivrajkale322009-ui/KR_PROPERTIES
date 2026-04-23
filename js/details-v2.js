@@ -2,30 +2,30 @@ import { db } from './firebase-config.js';
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const urlParams = new URLSearchParams(window.location.search);
-const plotId = urlParams.get('id');
+const flatId = urlParams.get('id');
 
 async function loadDetails() {
-    if (!plotId) return;
+    if (!flatId) return;
 
     try {
-        const docRef = doc(db, "plots", plotId);
+        const docRef = doc(db, "flats", flatId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            const plot = docSnap.data();
-            renderUI(plot);
+            const flat = docSnap.data();
+            renderUI(flat);
         }
     } catch (err) { console.error(err); }
 }
 
-function renderUI(plot) {
+function renderUI(flat) {
     // 1. Image Gallery
     const mainImg = document.getElementById('main-view');
     const thumbBox = document.getElementById('gallery-thumbs');
     
-    if (plot.imageUrls && plot.imageUrls.length > 0) {
-        mainImg.src = plot.imageUrls[0];
-        thumbBox.innerHTML = plot.imageUrls.map((url, i) => `
+    if (flat.imageUrls && flat.imageUrls.length > 0) {
+        mainImg.src = flat.imageUrls[0];
+        thumbBox.innerHTML = flat.imageUrls.map((url, i) => `
             <div class="thumb-item ${i === 0 ? 'active' : ''}" onclick="window.updateGallery('${url}', this)">
                 <img src="${url}">
             </div>
@@ -33,24 +33,24 @@ function renderUI(plot) {
     }
 
     // 2. Info Header
-    document.getElementById('plot-price').innerText = `₹${Number(plot.price).toLocaleString()}`;
-    document.getElementById('plot-title').innerText = plot.title;
-    document.getElementById('plot-location').innerHTML = `
+    document.getElementById('flat-price').innerText = `₹${Number(flat.price).toLocaleString()}`;
+    document.getElementById('flat-title').innerText = flat.title;
+    document.getElementById('flat-location').innerHTML = `
         <i class="fas fa-location-dot" style="color: var(--gold);"></i>
-        ${plot.location}
+        ${flat.location}
     `;
 
     // 3. Highlights & Description
-    document.getElementById('plot-description').innerText = plot.description || "No description provided.";
+    document.getElementById('flat-description').innerText = flat.description || "No description provided.";
     
     const highlights = [
-        { icon: 'fas fa-expand-arrows-alt', text: `${plot.size} sq.ft` },
+        { icon: 'fas fa-expand-arrows-alt', text: `${flat.size} sq.ft` },
         { icon: 'fas fa-file-contract', text: "7/12 Extract Ready" },
         { icon: 'fas fa-road', text: "Asphalt Road Access" },
         { icon: 'fas fa-bolt', text: "Electricity Ready" }
     ];
 
-    document.getElementById('plot-highlights').innerHTML = highlights.map(h => `
+    document.getElementById('flat-highlights').innerHTML = highlights.map(h => `
         <div class="highlight-item">
             <i class="${h.icon}"></i>
             ${h.text}
@@ -61,15 +61,15 @@ function renderUI(plot) {
     const videoSec = document.getElementById('video-section');
     const videoEmbed = document.getElementById('video-embed');
     
-    if (plot.videoLink && plot.videoLink.trim() !== "") {
-        const embedUrl = getYoutubeEmbed(plot.videoLink);
+    if (flat.videoLink && flat.videoLink.trim() !== "") {
+        const embedUrl = getYoutubeEmbed(flat.videoLink);
         if (embedUrl) {
             videoSec.style.display = 'block';
             videoEmbed.innerHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
         }
-    } else if (plot.videoEmbed && plot.videoEmbed.trim() !== "") {
+    } else if (flat.videoEmbed && flat.videoEmbed.trim() !== "") {
         videoSec.style.display = 'block';
-        videoEmbed.innerHTML = plot.videoEmbed;
+        videoEmbed.innerHTML = flat.videoEmbed;
     }
 }
 

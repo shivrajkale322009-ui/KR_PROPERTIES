@@ -2,7 +2,7 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, orderBy, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const plotGrid = document.querySelector('.plot-grid');
+const flatGrid = document.querySelector('.flat-grid');
 const adminBar = document.getElementById('admin-bar');
 const siteWrapper = document.getElementById('site-wrapper');
 const modal = document.getElementById('plot-modal');
@@ -14,7 +14,7 @@ onAuthStateChanged(auth, (user) => {
     isAdmin = !!user;
     if (isAdmin) { adminBar.style.display = 'flex'; siteWrapper.style.paddingTop = '50px'; }
     else { adminBar.style.display = 'none'; siteWrapper.style.paddingTop = '0'; }
-    loadRealtimePlots();
+    loadRealtimeFlats();
 });
 
 document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
@@ -41,15 +41,15 @@ const compressImage = async (file) => {
 // 3. STORAGE FOR EDITING
 let currentImageArray = [];
 
-function loadRealtimePlots() {
-    if (!plotGrid) return; // Grid removed from DOM
-    const q = query(collection(db, "plots"));
+function loadRealtimeFlats() {
+    if (!flatGrid) return; // Grid removed from DOM
+    const q = query(collection(db, "flats"));
     onSnapshot(q, (snapshot) => {
-        console.log("Firestore Update: " + snapshot.size + " plots found.");
-        plotGrid.innerHTML = "";
+        console.log("Firestore Update: " + snapshot.size + " flats found.");
+        flatGrid.innerHTML = "";
         snapshot.forEach((document) => {
-            console.log("Rendering plot: " + document.id);
-            renderPlot(document.data(), document.id);
+            console.log("Rendering flat: " + document.id);
+            renderFlat(document.data(), document.id);
         });
     }, (err) => {
         console.error("Firestore Error: ", err);
@@ -57,36 +57,36 @@ function loadRealtimePlots() {
     });
 }
 
-function renderPlot(plot, id) {
+function renderFlat(flat, id) {
     const card = document.createElement('article');
     card.className = 'project-card';
     card.innerHTML = `
         <div class="project-img">
-            <img src="${plot.imageUrls && plot.imageUrls[0] ? plot.imageUrls[0] : 'images/HERO-1.png'}" alt="${plot.title}">
-            <div class="project-badge">${plot.location}</div>
+            <img src="${flat.imageUrls && flat.imageUrls[0] ? flat.imageUrls[0] : 'images/HERO-1.png'}" alt="${flat.title}">
+            <div class="project-badge">${flat.location}</div>
             <div class="admin-controls" style="display: ${isAdmin ? 'flex' : 'none'}; position: absolute; top: 1rem; right: 1rem; gap: 0.5rem; z-index: 10;">
                 <button class="edit-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: var(--white); color: var(--navy);">Edit</button>
                 <button class="delete-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: #ef4444; color: white;">Delete</button>
             </div>
         </div>
         <div class="project-info">
-            <div class="project-price">₹${Number(plot.price).toLocaleString()}</div>
-            <h3 class="premium-font">${plot.title}</h3>
+            <div class="project-price">₹${Number(flat.price).toLocaleString()}</div>
+            <h3 class="premium-font">${flat.title}</h3>
             <div class="project-meta">
-                <span><i class="fas fa-expand-arrows-alt"></i> ${plot.size} sq.ft</span>
-                <span><i class="fas fa-map-marker-alt"></i> ${plot.location}</span>
+                <span><i class="fas fa-expand-arrows-alt"></i> ${flat.size} sq.ft</span>
+                <span><i class="fas fa-map-marker-alt"></i> ${flat.location}</span>
             </div>
             <a href="plot-details.html?id=${id}" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem; font-size: 0.85rem;">View Details</a>
         </div>
     `;
-    plotGrid.appendChild(card);
+    flatGrid.appendChild(card);
 }
 
 // 4. FORM HANDLING
-document.getElementById('add-plot-btn').addEventListener('click', () => {
+document.getElementById('add-flat-btn').addEventListener('click', () => {
     plotForm.reset(); document.getElementById('edit-id').value = "";
     currentImageArray = []; renderImageManager();
-    document.getElementById('modal-title').innerText = "Create Global Plot Listing";
+    document.getElementById('modal-title').innerText = "Create Global Flat Listing";
     modal.style.display = 'flex';
 });
 
@@ -114,35 +114,38 @@ plotForm.addEventListener('submit', async (e) => {
     const id = document.getElementById('edit-id').value;
 
     // Get basic fields
-    const plotData = {
+    const flatData = {
         title: document.getElementById('title').value,
         price: Number(document.getElementById('price').value),
         location: document.getElementById('location').value,
         size: document.getElementById('size').value,
         description: document.getElementById('description').value,
-        videoLink: document.getElementById('video-link')?.value || "",
-        videoEmbed: document.getElementById('video-embed-field')?.value || ""
+        videoLink: document.getElementById('videoLink').value,
+        videoEmbed: document.getElementById('videoEmbed').value,
+        listingType: document.getElementById('listingType').value
     };
 
     try {
-        // Handle new image additions
-        const imageFiles = Array.from(document.getElementById('image-files').files);
-        for (const f of imageFiles) {
-            currentImageArray.push(await compressImage(f));
+        // Add images if any
+        const imageFiles = document.getElementById('imageFiles').files;
+        if (imageFiles.length > 0) {
+            for (const f of imageFiles) {
+                currentImageArray.push(await compressImage(f));
+            }
+            flatData.imageUrls = currentImageArray;
         }
-        plotData.imageUrls = currentImageArray;
 
-        if (id) { await updateDoc(doc(db, "plots", id), plotData); }
-        else { plotData.createdAt = serverTimestamp(); await addDoc(collection(db, "plots"), plotData); }
+        if (id) { await updateDoc(doc(db, "flats", id), flatData); }
+        else { flatData.createdAt = serverTimestamp(); await addDoc(collection(db, "flats"), flatData); }
         modal.style.display = 'none';
     } catch (err) { alert("Failed. Check internet/image sizes."); } finally { saveBtn.innerText = "Publish"; saveBtn.disabled = false; }
 });
 
-plotGrid.addEventListener('click', async (e) => {
+flatGrid.addEventListener('click', async (e) => {
     const id = e.target.dataset.id; if (!id) return;
-    if (e.target.classList.contains('delete-btn')) { if (confirm("Delete?")) await deleteDoc(doc(db, "plots", id)); }
+    if (e.target.classList.contains('delete-btn')) { if (confirm("Delete?")) await deleteDoc(doc(db, "flats", id)); }
     if (e.target.classList.contains('edit-btn')) {
-        const snap = await getDoc(doc(db, "plots", id));
+        const snap = await getDoc(doc(db, "flats", id));
         if (snap.exists()) {
             const d = snap.data(); document.getElementById('edit-id').value = id;
             document.getElementById('title').value = d.title; document.getElementById('price').value = d.price;
