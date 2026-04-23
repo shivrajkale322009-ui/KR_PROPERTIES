@@ -62,7 +62,7 @@ function renderFlat(flat, id) {
     card.className = 'project-card';
     card.innerHTML = `
         <div class="project-img">
-            <img src="${flat.imageUrls && flat.imageUrls[0] ? flat.imageUrls[0] : 'images/HERO-1.png'}" alt="${flat.title}">
+            <img src="${flat.imageUrls && flat.imageUrls[0] ? flat.imageUrls[0] : 'images/hero-main.jpg'}" alt="${flat.title}">
             <div class="project-badge">${flat.location}</div>
             <div class="admin-controls" style="display: ${isAdmin ? 'flex' : 'none'}; position: absolute; top: 1rem; right: 1rem; gap: 0.5rem; z-index: 10;">
                 <button class="edit-btn btn" data-id="${id}" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: var(--white); color: var(--navy);">Edit</button>
