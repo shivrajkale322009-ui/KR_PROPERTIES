@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playball&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playball&family=Plus+Jakarta+Sans:wght@700;800&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -114,16 +114,42 @@
         <section id="home" class="hero">
             <div class="hero-slider">
                 <div class="hero-slide active"
-                    style="background-image: url('images/HERO-1.png');">
+                    style="background-image: url('images/HERO-1.jpg');">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-slide"
-                    style="background-image: url('images/HERO-1.png');">
+                    style="background-image: url('images/hero-2.jpg');">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-slide"
-                    style="background-image: url('images/HERO-1.png');">
+                    style="background-image: url('images/HERO-1.jpg');">
                     <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-slide"
+                    style="background-image: url('images/hero-2.jpg');">
+                    <div class="hero-overlay"></div>
+                </div>
+            </div>
+
+            <div class="hero-content-intro">
+                <div id="stage">
+                    <div class="ray" id="r1" style="transform:rotate(-35deg)"></div>
+                    <div class="ray" id="r2" style="transform:rotate(-20deg)"></div>
+                    <div class="ray" id="r3" style="transform:rotate(-5deg)"></div>
+                    <div class="ray" id="r4" style="transform:rotate(10deg)"></div>
+                    <div class="ray" id="r5" style="transform:rotate(25deg)"></div>
+                    <div class="ray" id="r6" style="transform:rotate(40deg)"></div>
+                   
+                    <div id="intro-jk">JK</div>
+                   
+                    <div id="rule-wrap-intro">
+                      <div id="rule-left-intro"></div>
+                      <div id="rule-diamond-intro"></div>
+                      <div id="rule-right-intro"></div>
+                    </div>
+                   
+                    <div id="properties-intro">Properties</div>
+                    <div id="tagline-intro">स्वप्नातील घरासाठी आमचा विश्वास</div>
                 </div>
             </div>
 
@@ -134,6 +160,7 @@
             <!-- Slider Pagination -->
             <div class="slider-dots pagination-bottom">
                 <span class="dot active"></span>
+                <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
             </div>
@@ -243,23 +270,23 @@
 
                 <div class="amenities-grid">
                     <div class="amenity-item">
-                        <div class="amenity-icon"><i class="fas fa-faucet-drip"></i></div>
+                        <div class="amenity-icon"><img src="images/amenity-water.png" alt="Water Supply"></div>
                         <span class="premium-font">Water Supply</span>
                     </div>
                     <div class="amenity-item">
-                        <div class="amenity-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="amenity-icon"><img src="images/amenity-power.png" alt="24/7 Power"></div>
                         <span class="premium-font">24/7 Power</span>
                     </div>
                     <div class="amenity-item">
-                        <div class="amenity-icon"><i class="fas fa-road"></i></div>
+                        <div class="amenity-icon"><img src="images/amenity-roads.png" alt="Wide Roads"></div>
                         <span class="premium-font">Wide Roads</span>
                     </div>
                     <div class="amenity-item">
-                        <div class="amenity-icon"><i class="fas fa-tree"></i></div>
+                        <div class="amenity-icon"><img src="images/amenity-landscape.png" alt="Landscaping"></div>
                         <span class="premium-font">Landscaping</span>
                     </div>
                     <div class="amenity-item">
-                        <div class="amenity-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="amenity-icon"><img src="images/amenity-security.png" alt="Gated Security"></div>
                         <span class="premium-font">Gated Security</span>
                     </div>
                 </div>
@@ -277,7 +304,7 @@
                 <div class="testimonials-slider">
                     <div class="testimonial-track">
                         <div class="testimonial-slide">
-                            <p class="testimonial-content">"श्री गणेश ड्रीम पार्क मधील व्यावसायिकता आणि पायाभूत सुविधांचा दर्जा माझ्या अपेक्षेपेक्षा जास्त होता. जे.के. प्रॉपर्टीज खरोखरच विश्वसनीय आहेत."</p>
+                            <p class="testimonial-content">"जय गणेश ड्रीम पार्क मधील व्यावसायिकता आणि पायाभूत सुविधांचा दर्जा माझ्या अपेक्षेपेक्षा जास्त होता. जे.के. प्रॉपर्टीज खरोखरच विश्वसनीय आहेत."</p>
                             <div class="testimonial-author">- राहुल देशमुख</div>
                         </div>
                         <div class="testimonial-slide">
@@ -461,19 +488,102 @@
         const heroDots = document.querySelectorAll('.dot');
         const heroPrev = document.querySelector('.slider-arrow.prev');
         const heroNext = document.querySelector('.slider-arrow.next');
+        const heroWrapper = document.querySelector('.hero-slider');
         let heroIndex = 0;
         let sliderTimer;
 
-        const heroWrapper = document.querySelector('.hero-slider');
+        // Intro Animation System
+        const $intro = id => document.getElementById(id);
+        
+        function resetIntro(){
+            [1,2,3,4,5,6].forEach(i=>{
+                const r=$intro('r'+i);
+                if(r) { r.style.transition='none'; r.style.opacity='0'; }
+            });
+            const jk=$intro('intro-jk');
+            if(jk){
+                jk.style.transition='none'; jk.style.opacity='0';
+                jk.style.transform='translateY(30px) scale(0.92)';
+            }
+            const rw=$intro('rule-wrap-intro');
+            if(rw) { rw.style.transition='none'; rw.style.opacity='0'; }
+            const rl=$intro('rule-left-intro');
+            if(rl) { rl.style.transition='none'; rl.style.width='0'; }
+            const rr=$intro('rule-right-intro');
+            if(rr) { rr.style.transition='none'; rr.style.width='0'; }
+            const rd=$intro('rule-diamond-intro');
+            if(rd) { rd.style.transition='none'; rd.style.opacity='0'; }
+            const pr=$intro('properties-intro');
+            if(pr){
+                pr.style.transition='none'; pr.style.opacity='0';
+                pr.style.transform='translateY(10px)';
+            }
+            const tg=$intro('tagline-intro');
+            if(tg){
+                tg.style.transition='none'; tg.style.opacity='0';
+                tg.style.transform='translateY(8px)';
+            }
+        }
 
+        function runIntro(){
+            console.log("Starting Intro Animation...");
+            [1,2,3,4,5,6].forEach((i,idx)=>{
+                setTimeout(()=>{
+                    const r=$intro('r'+i);
+                    if(r) {
+                        r.style.transition='opacity 1200ms ease';
+                        r.style.opacity=(0.04+idx*0.015).toFixed(3);
+                    }
+                }, 100+idx*60);
+            });
+
+            setTimeout(()=>{
+                const jk=$intro('intro-jk');
+                if(jk){
+                    jk.style.transition='opacity 800ms ease, transform 900ms cubic-bezier(0.22,1,0.36,1)';
+                    jk.style.opacity='1'; jk.style.transform='translateY(0) scale(1)';
+                }
+            }, 400);
+
+            setTimeout(()=>{
+                const rw=$intro('rule-wrap-intro');
+                if(rw){
+                    rw.style.transition='opacity 400ms ease';
+                    rw.style.opacity='1';
+                }
+                setTimeout(()=>{
+                    const rd=$intro('rule-diamond-intro');
+                    if(rd) { rd.style.transition='opacity 300ms ease'; rd.style.opacity='1'; }
+                    const rl=$intro('rule-left-intro');
+                    if(rl) { rl.style.transition='width 600ms ease-out'; rl.style.width='clamp(60px,10vw,120px)'; }
+                    const rr=$intro('rule-right-intro');
+                    if(rr) { rr.style.transition='width 600ms ease-out'; rr.style.width='clamp(60px,10vw,120px)'; }
+                }, 100);
+            }, 1150);
+
+            setTimeout(()=>{
+                const pr=$intro('properties-intro');
+                if(pr){
+                    pr.style.transition='opacity 700ms ease, transform 700ms ease';
+                    pr.style.opacity='1'; pr.style.transform='translateY(0)';
+                }
+            }, 1600);
+
+            setTimeout(()=>{
+                const tg=$intro('tagline-intro');
+                if(tg){
+                    tg.style.transition='opacity 900ms ease, transform 900ms ease';
+                    tg.style.opacity='1'; tg.style.transform='translateY(0)';
+                }
+            }, 2200);
+        }
+
+        // Initialize Everything
         function updateSlider(index) {
             heroDots.forEach(dot => dot.classList.remove('active'));
-
             heroIndex = (index + heroSlides.length) % heroSlides.length;
-
             heroWrapper.style.transform = `translateX(-${heroIndex * 100}%)`;
             heroDots[heroIndex].classList.add('active');
-
             resetTimer();
         }
 
@@ -492,6 +602,7 @@
         });
 
         resetTimer();
+        setTimeout(runIntro, 800);
 
         // Testimonials Slider
         const track = document.querySelector('.testimonial-track');
